@@ -2,7 +2,7 @@
 
 A simple blog app created for the [Fullstack-HY 2023](https://github.com/3nd3r1/fullstack-hy) course.
 
-[Live preview](https://ender.fi/)
+[Live preview](https://ender.fi/projects/bloglist)
 
 ## Stack
 
