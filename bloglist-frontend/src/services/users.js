@@ -1,5 +1,5 @@
 import axios from "axios";
-const baseUrl = "/bloglist-api/users";
+const baseUrl = "/api/users";
 
 const userService = {};
 
