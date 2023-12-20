@@ -6,7 +6,7 @@ import store from "./store";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<Provider store={store}>
-		<Router>
+		<Router basename="/projects/bloglist">
 			<App />
 		</Router>
 	</Provider>

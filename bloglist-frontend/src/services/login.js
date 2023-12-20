@@ -1,5 +1,5 @@
 import axios from "axios";
-const baseUrl = "/api/login";
+const baseUrl = "/bloglist-api/login";
 
 const loginService = {};
 
