@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 2,
 	"dockerfileLines": [
-		"FROM node:16.17.0",
+		"FROM node:16.17.0 as builder",
 		"RUN mkdir -p /usr/src/app",
 		"WORKDIR /usr/src/app",
 		"COPY ./bloglist-frontend/ /usr/src/app",
