@@ -2,6 +2,8 @@
 	"schemaVersion": 2,
 	"dockerfileLines": [
 		"FROM node:16.17.0 as builder",
+		"ARG REACT_APP_BACKEND_URL=${REACT_APP_BACKEND_URL}",
+		"ENV REACT_APP_BACKEND_URL=${REACT_APP_BACKEND_URL}",
 		"RUN mkdir -p /usr/src/app",
 		"WORKDIR /usr/src/app",
 		"COPY ./bloglist-frontend/ /usr/src/app",
