@@ -31,6 +31,11 @@ const LoginPage = () => {
 			<h4 className="text-2xl font-bold mb-4 text-center">
 				Log in to application
 			</h4>
+			<div>
+				<h3>Test credentials</h3>
+				<p>Username: test</p>
+				<p>Password: test</p>
+			</div>
 			<LoginForm />
 		</motion.div>
 	);
