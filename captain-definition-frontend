@@ -7,9 +7,13 @@
 		"COPY ./bloglist-frontend/package.json /usr/src/app/",
 		"RUN npm install && npm cache clean --force",
 		"COPY ./bloglist-frontend/ /usr/src/app",
-		"ENV NODE_ENV production",
-		"ENV PORT 80",
+		"RUN npm run build",
+		"FROM nginx:1.13.9-alpine",
+		"RUN rm -rf /etc/nginx/conf.d",
+		"RUN mkdir -p /etc/nginx/conf.d",
+		"COPY ./default.conf /etc/nginx/conf.d/",
+		"COPY --from=builder /usr/src/app/build /usr/share/nginx/html",
 		"EXPOSE 80",
-		"CMD [ \"npm\", \"start\" ]"
+		"CMD [\"nginx\", \"-g\", \"daemon off;\"]"
 	]
 }
