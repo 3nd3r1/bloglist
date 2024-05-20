@@ -1,0 +1,45 @@
+version: "3.8"
+
+services:
+  backend:
+    build: ./bloglist-backend
+    command: npm run dev
+    ports:
+      - 127.0.0.1:3001:3001
+    environment:
+      - PORT=3001
+      - MONGODB_URI=mongodb://mongo:mongo@mongodb:27017/bloglist
+    volumes:
+      - ./bloglist-backend:/usr/src/app
+      - backend-node-modules:/usr/src/app/node_modules
+    links:
+      - mongodb:mongodb
+    container_name: bloglist-backend
+
+  frontend:
+    build: ./bloglist-frontend
+    command: npm run start
+    ports:
+      - 127.0.0.1:3000:3000
+    environment:
+      - REACT_APP_BACKEND_URL=http://localhost:3001/api
+    volumes:
+      - ./bloglist-frontend:/usr/src/app
+      - frontend-node-modules:/usr/src/app/node_modules
+    container_name: bloglist-frontend
+
+  mongodb:
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+      - MONGO_INITDB_DATABASE=bloglist
+    volumes:
+      - mongodb-data:/data/db
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+    container_name: bloglist-mongodb
+
+volumes:
+  backend-node-modules:
+  frontend-node-modules:
+  mongodb-data:

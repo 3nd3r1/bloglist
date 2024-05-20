@@ -4,6 +4,16 @@ A simple blog app created for the [Fullstack-HY 2023](https://github.com/3nd3r1/
 
 [Live preview](https://bloglist-frontend.host.ender.fi/blogs)
 
+## Running
+
+To run the project locally with docker-compose, run the following commands:
+
+```bash
+git clone https://github.com/3nd3r1/bloglist.git
+cd bloglist
+docker compose up
+```
+
 ## Stack
 
 ### Frontend
