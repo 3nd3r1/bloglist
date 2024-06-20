@@ -7,7 +7,7 @@ services:
       context: ./bloglist-backend
       dockerfile: Dockerfile
     environment:
-      - PORT=3001
+      - PORT=80
       - MONGODB_URI=mongodb://mongo:mongo@mongodb:27017/bloglist
     links:
       - mongodb:mongodb
