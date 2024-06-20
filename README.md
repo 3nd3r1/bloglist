@@ -2,7 +2,19 @@
 
 A simple blog app created for the [Fullstack-HY 2023](https://github.com/3nd3r1/fullstack-hy) course.
 
-[Live preview](https://viljamiranta.fi/projects/bloglist)
+[Live preview](https://bloglist-frontend.host.ender.fi/blogs)
+
+## Running
+
+To run the project locally with docker-compose, run the following commands:
+
+```bash
+git clone https://github.com/3nd3r1/bloglist.git
+cd bloglist
+docker compose up -d
+```
+
+The frontend will then be available at [http://localhost:8080](http://localhost:8080).
 
 ## Stack
 

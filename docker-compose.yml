@@ -1,0 +1,47 @@
+---
+services:
+  backend:
+    image: bloglist-backend
+    container_name: bloglist-backend
+    build:
+      context: ./bloglist-backend
+      dockerfile: Dockerfile
+    environment:
+      - PORT=3001
+      - MONGODB_URI=mongodb://mongo:mongo@mongodb:27017/bloglist
+    links:
+      - mongodb:mongodb
+
+  frontend:
+    image: bloglist-frontend
+    container_name: bloglist-frontend
+    build:
+      context: ./bloglist-frontend
+      dockerfile: Dockerfile
+      args:
+        REACT_APP_BACKEND_URL: http://localhost:8080/api
+
+  mongodb:
+    image: mongo
+    container_name: bloglist-mongodb
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+      - MONGO_INITDB_DATABASE=bloglist
+    volumes:
+      - mongodb-data:/data/db
+      - ./bloglist-backend/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+
+  nginx:
+    image: nginx:1.21
+    container_name: bloglist-nginx
+    ports:
+      - "127.0.0.1:8080:80"
+    links:
+      - frontend
+      - backend
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+
+volumes:
+  mongodb-data:
