@@ -4,10 +4,7 @@ WORKDIR /usr/src/app
 
 EXPOSE 3000
 ENV PORT=3000
-ENV SECRET=secret
-
-COPY . .
-
-RUN npm ci
+ENV REACT_APP_BACKEND_URL=http://localhost:3001
+ENV WDS_SOCKET_PORT=3000
 
 ENTRYPOINT ["npm", "run", "start"]

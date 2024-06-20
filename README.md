@@ -11,8 +11,10 @@ To run the project locally with docker-compose, run the following commands:
 ```bash
 git clone https://github.com/3nd3r1/bloglist.git
 cd bloglist
-docker compose up
+docker compose up -d
 ```
+
+The frontend will then be available at [http://localhost:8080](http://localhost:8080).
 
 ## Stack
 
